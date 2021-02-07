@@ -54,6 +54,20 @@ else { print("This is not a number - \(text2)") }
 if Int(text3) != nil { print("This is a number - \(text3)") }
 else { print("This is not a number - \(text3)") }
 
+var test_tuple = (year: 2019, faculty: "FIT", course: 4)
+print("Tuple elements by name: \(test_tuple.year) --- \(test_tuple.faculty) --- \(test_tuple.course)")
+print("Tuple elements by index: \(test_tuple.1) --- \(test_tuple.0) --- \(test_tuple.2)\n")
+
+test_tuple.0 = 2021
+test_tuple.1 = "SOMS"
+test_tuple.2 = 3
+
+let (year, faculty, course) = test_tuple
+print("Constants:\nyear - \(year)\nfaculty - \(faculty)\ncourse - \(course)\n") 
+
+let copy_tuple : (Int, String, Int) = test_tuple
+print("Copy_tuple values:\n\(copy_tuple.0)\n\(copy_tuple.1)\n\(copy_tuple.2)\n")
+
 print("\n======= TASK 4 =======\n")
 print("\n======= TASK 5 =======\n")
 print("\n======= TASK 6 =======\n")
@@ -61,5 +75,3 @@ print("\n======= TASK 7 =======\n")
 print("\n======= TASK 8 =======\n")
 print("\n======= TASK 9 =======\n")
 print("\n======= TASK 10 =======\n")
-
-
