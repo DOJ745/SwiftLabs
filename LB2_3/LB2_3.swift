@@ -75,13 +75,42 @@ let string_with_num = "26"
 let string_no_num = "str"
 
 var int_from_str: Int? = Int(string_with_num)
-print("Optional int - \(int_from_str)")
+print("Optional int - \(int_from_str!)")
 
-int_from_str = nil
+//int_from_str = nil
 
 print("\n======= TASK 5 =======\n")
+
+
+if let some_num = int_from_str {
+    print("Integer \(int_from_str!) not string and it is number - \(some_num)")
+} 
+else {
+    print("Integer \(int_from_str!) is string")
+}
+
 print("\n======= TASK 6 =======\n")
+
+
+let (year_new, speciality, group) = (2020, "PSIT", 3)
+
+let defaultName = "noname"
+var userName: String? = "ADMIN"
+userName = userName ?? defaultName
+print("Current user name - \(userName!)")
+
 print("\n======= TASK 7 =======\n")
+
+var winter_months = ["December", "January", "February"]
+var i: Int
+for i in 0...winter_months.count - 1 {
+    print("Months of winter(closet cycle) - \(winter_months[i])")
+}
+
+for i in 0..<winter_months.count {
+    print("Months of winter(non-closet cycle) - \(winter_months[i])")
+}
+
 print("\n======= TASK 8 =======\n")
 print("\n======= TASK 9 =======\n")
 print("\n======= TASK 10 =======\n")
