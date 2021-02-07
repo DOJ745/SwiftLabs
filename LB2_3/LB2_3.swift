@@ -69,6 +69,16 @@ let copy_tuple : (Int, String, Int) = test_tuple
 print("Copy_tuple values:\n\(copy_tuple.0)\n\(copy_tuple.1)\n\(copy_tuple.2)\n")
 
 print("\n======= TASK 4 =======\n")
+
+
+let string_with_num = "26"
+let string_no_num = "str"
+
+var int_from_str: Int? = Int(string_with_num)
+print("Optional int - \(int_from_str)")
+
+int_from_str = nil
+
 print("\n======= TASK 5 =======\n")
 print("\n======= TASK 6 =======\n")
 print("\n======= TASK 7 =======\n")
