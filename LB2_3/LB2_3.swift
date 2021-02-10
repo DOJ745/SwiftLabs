@@ -112,5 +112,29 @@ for i in 0..<winter_months.count {
 }
 
 print("\n======= TASK 8 =======\n")
+
+var var_for_str = "BBC"
+let let_for_str = "Great Britian"
+let some_string = "In \(let_for_str) there is channel named \(var_for_str), which is exist around \(19 + 1) years\n"
+print(some_string)
+
 print("\n======= TASK 9 =======\n")
+ 
+typealias Operation = (operandOne: Double, operandTwo: Double, operation: Character)
+
+let some_operation: Operation = (5.16, 8, "l")
+switch some_operation {
+    case (_, _, "+"):
+        print("Sum: \(some_operation.0 + some_operation.1)")
+    case (_, _, "-"):
+        print("Substract: \(some_operation.0 - some_operation.1)")
+    case (_, _, "/"):
+        print("Divine: \(some_operation.0 / some_operation.1)")
+    case (_, _, "*"):
+        print("Multiply: \(some_operation.0 * some_operation.1)")
+    default:
+        print("Unknown operation")
+    
+}
+
 print("\n======= TASK 10 =======\n")
