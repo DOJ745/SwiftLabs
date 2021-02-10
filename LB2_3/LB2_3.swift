@@ -6,7 +6,6 @@ var test_string2 = "hello again"
 let test_float: Float = 3.14;
 let test_bool: Bool = false
 var test_bool2 = true
-
 print("======= TASK 1 =======\n")
 
 
@@ -147,16 +146,36 @@ for elem in many_numbers{
 var ind = 0
 var sum = 0
 repeat {
+
+    for i in stride(from: 0, through: 5, by: 1){
+        sum = sum + many_numbers[i]
+        print("Sum in stride - \(sum)")
+    }
+
+    for i in 0...5 {
+        sum = sum + many_numbers[i]
+        print("Sum in 0...5 - \(sum)")
+    }
+
+    for i in (0...5).reversed(){
+        sum = sum + many_numbers[i]
+        print("Sum in reversed - \(sum)")
+    }
     sum += many_numbers[ind]
     ind = ind + 1
+    print("Sum in repeat-while - \(sum)")
 } while ind < many_numbers.count
 
-for i in stride(from: 0, through: 5, by: 1){
-    sum = sum + many_numbers[i]
+
+func changeOptStrToUpperCase() {
+
+	var random_name:String?
+	guard let temp = random_name else {
+		print("Name is nil. Cannot process")
+		return
+	}
+	print("Uppercased:\(temp.uppercased())")
 }
-for i in 0...5 {
-    sum = sum + many_numbers[i]
-}
-for i in (0...5).reversed(){
-    sum = sum + many_numbers[i]
-}
+
+changeOptStrToUpperCase()
+
