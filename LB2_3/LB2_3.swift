@@ -151,16 +151,17 @@ repeat {
         sum = sum + many_numbers[i]
         print("Sum in stride - \(sum)")
     }
-
+    sum = 0
     for i in 0...5 {
         sum = sum + many_numbers[i]
         print("Sum in 0...5 - \(sum)")
     }
-
+    sum = 0
     for i in (0...5).reversed(){
         sum = sum + many_numbers[i]
         print("Sum in reversed - \(sum)")
     }
+    sum = 0
     sum += many_numbers[ind]
     ind = ind + 1
     print("Sum in repeat-while - \(sum)")
