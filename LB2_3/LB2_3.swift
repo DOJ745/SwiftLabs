@@ -1,3 +1,5 @@
+print("======= TASK 1 =======\n")
+
 let test_number: Int = 65
 var test_double = 33.4
 let test_double2: Double = 56.012
@@ -6,8 +8,6 @@ var test_string2 = "hello again"
 let test_float: Float = 3.14;
 let test_bool: Bool = false
 var test_bool2 = true
-print("======= TASK 1 =======\n")
-
 
 print("test_number(let) - \(test_number) --- \(type(of: test_number))")
 print("test_double(var) - \(test_double) --- \(type(of: test_double))")
@@ -148,17 +148,17 @@ var sum = 0
 repeat {
 
     for i in stride(from: 0, through: 5, by: 1){
-        sum = sum + many_numbers[i]
+        sum += many_numbers[i]
         print("Sum in stride - \(sum)")
     }
     sum = 0
     for i in 0...5 {
-        sum = sum + many_numbers[i]
+        sum += many_numbers[i]
         print("Sum in 0...5 - \(sum)")
     }
     sum = 0
     for i in (0...5).reversed(){
-        sum = sum + many_numbers[i]
+        sum += many_numbers[i]
         print("Sum in reversed - \(sum)")
     }
     sum = 0
