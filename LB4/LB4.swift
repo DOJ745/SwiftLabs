@@ -23,5 +23,46 @@ for (index , value) in array_of_five.enumerated() {
 }
 
 print("\n======= TASK 2 =======\n")
+
+var chessFigures: [String : (Character, Int)?] = [:]
+chessFigures = ["Белая пешка" : ("A", 4), "Черный слон" : nil, "Белый король" : ("E", 2)]
+
+var chessFiguresCoords: (Character, Int)?
+for coords_values in chessFigures.values{
+
+    if let chessFiguresCoords = coords_values{
+        print("Chess figure have coords! It's coords - \(chessFiguresCoords)")
+    }
+    else { print("Figure is out of table") }
+}
+
 print("\n======= TASK 3 =======\n")
+
+func sum(numbers: Double...) -> Double {
+    var sum: Double = 0
+    for elem in numbers {
+        sum += elem
+    }
+    return sum
+}
+print("Sum of random doubles - \(sum(numbers: 40.15, 0.75, 1.23) )\n")
+
+func average(numbers_avg: Double...) -> Double {
+    var avg: Double = 0
+    for elem in numbers_avg {
+        avg += sum(numbers: elem)
+    }
+    avg = avg / Double(numbers_avg.count)
+    return avg
+}
+print("Avgerage of numbers 5.133, 10.1, 76.5 - \(average(numbers_avg: 5.133, 10.1, 76.5))\n")
+
+func argToNegative(_ arg: inout Double) -> () {
+    arg = -arg
+}
+var test_arg = 55.0
+print("Test arg before changin - \(test_arg)\n")
+argToNegative(&test_arg)
+print("Test arg after changing - \(test_arg)\n")
+
 print("\n======= TASK 4 =======\n")
