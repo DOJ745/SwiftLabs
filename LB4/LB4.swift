@@ -65,4 +65,62 @@ print("Test arg before changin - \(test_arg)\n")
 argToNegative(&test_arg)
 print("Test arg after changing - \(test_arg)\n")
 
+func doWithTwo(doFunc: (Double...) -> Double, _ argOne: Double, _ argTwo: Double) -> Double {
+    var result: Double
+    result = doFunc(argOne, argTwo)
+    return result
+}
+
+func defaultFunc(_ args: Double...) -> Double{
+    return 0.0
+}
+
+print("doWithTwo - \(doWithTwo(doFunc: sum, 5.14, 8.16))\n")
+
+func operation (which: String) -> ((Double...)-> Double) {
+    if which == "sum" { print("sum() func"); return sum }
+    else if which == "average" { print("average() func"); return average }
+    else {
+        print("No such operation\n")
+        return defaultFunc
+    }
+}
+var some_operation = operation(which: "sum") 
+print("Result of 'operation()' - \(some_operation(3.0, 5.0))\n")
+
+func doOperation(operation: String) -> ((Double, Double) -> Double)? {
+
+    func simpleSum(_ argOne: Double, _ argTwo: Double) -> Double{
+        return argOne + argTwo
+    }
+    func simpleMultiply(_ argOne: Double, _ argTwo: Double) -> Double{
+       return argOne * argTwo 
+    }
+    func simpleDivision(_ argOne: Double, _ argTwo: Double) -> Double{
+        return argOne / argTwo
+    }
+    func simpleSubtraction(_ argOne: Double, _ argTwo: Double) -> Double{
+        return argOne - argTwo
+    }
+
+    switch operation {
+        case "+":
+            return simpleSum
+        case "-":
+            return simpleSubtraction
+        case "*":
+            return simpleMultiply
+        case "/":
+            return simpleDivision
+        
+        default: return nil
+    }
+}
+
+var some_operationTwo: ((Double, Double) -> Double)?
+if let some_operationTwo = doOperation(operation: "p"){
+    print("Result of 'doOperation()' - \(some_operationTwo(4.0, 6.0))\n")
+}
+else { print("No such operation\n") }
+
 print("\n======= TASK 4 =======\n")
