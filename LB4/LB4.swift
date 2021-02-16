@@ -131,6 +131,10 @@ print("Arr sorted by desc - \(randomNumsArr)")
 randomNumsArr.sort(by: {$0 < $1} )
 print("Arr sorted by asc - \(randomNumsArr)")
 
+randomNumsArr = [1, 2, 3, 10, 9, 50, 4]
+var maxFromArr: Int = randomNumsArr.reduce(0) { (total, number) in max(total, number) }
+print("Max elem of arr from reduce() - \(maxFromArr)")
+
 var someMatrix = [[1,2,3], [34,56], [1,78,5]]
 print("Current matrix - \(someMatrix)")
 var filtedMatrix = someMatrix.flatMap{$0.filter{$0 % 1 == 0} }
