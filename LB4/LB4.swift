@@ -121,7 +121,7 @@ var some_operationTwo: ((Double, Double) -> Double)?
 if let some_operationTwo = doOperation(operation: "p"){
     print("Result of 'doOperation()' - \(some_operationTwo(4.0, 6.0))\n")
 }
-else { print("No such operation\n") }
+else { print("No such operation in 'doOperation'\n") }
 
 print("\n======= TASK 4 =======\n")
 
@@ -131,12 +131,33 @@ print("Arr sorted by desc - \(randomNumsArr)")
 randomNumsArr.sort(by: {$0 < $1} )
 print("Arr sorted by asc - \(randomNumsArr)")
 
+/*var num_arr: [Int?] = [12, 4, 54, 90, 89, nil]
+var num_norm_arr: [Int] = num_arr
+.compactMap{ $0 }
+.map{ num in String(num) }
+print(num_norm_arr)*/
+
+var num_arr: [String] = ["12", "4", "54", "90", "89", "nb67"]
+var num_str_arr = num_arr
+.compactMap{ Int($0) }
+.map{ Array(String($0)) }
+
+num_str_arr.forEach{ print("RESULT - \($0.compactMap{ Int(String($0)) }.reduce(0, +)) ") }
+//.forEach{ print($0) }
+
+//num_str_arr = num_str_arr.forEach{ $0.compactMap{Int($0)} }
+//$0.forEach{ print("elem - \($0)") }
+//.flatMap{ $0 }
+//.reduce("", {a,b in a + b})
+
+print("num_arr - \(num_str_arr)")
+
 randomNumsArr = [1, 2, 3, 10, 9, 50, 4]
 var maxFromArr: Int = randomNumsArr.reduce(0) { (total, number) in max(total, number) }
 print("Max elem of arr from reduce() - \(maxFromArr)")
 
 var someMatrix = [[1,2,3], [34,56], [1,78,5]]
 print("Current matrix - \(someMatrix)")
-var filtedMatrix = someMatrix.flatMap{$0.filter{$0 % 1 == 0} }
+var filtedMatrix = someMatrix.flatMap{$0}
 print("Matrix to simple arr - \(filtedMatrix)")
 
