@@ -131,11 +131,6 @@ print("Arr sorted by desc - \(randomNumsArr)")
 randomNumsArr.sort(by: {$0 < $1} )
 print("Arr sorted by asc - \(randomNumsArr)")
 
-/*var num_arr: [Int?] = [12, 4, 54, 90, 89, nil]
-var num_norm_arr: [Int] = num_arr
-.compactMap{ $0 }
-.map{ num in String(num) }
-print(num_norm_arr)*/
 
 var num_arr: [String] = ["12", "4", "54", "90", "89", "nb67"]
 var num_str_arr = num_arr
@@ -143,12 +138,6 @@ var num_str_arr = num_arr
 .map{ Array(String($0)) }
 
 num_str_arr.forEach{ print("RESULT - \($0.compactMap{ Int(String($0)) }.reduce(0, +)) ") }
-//.forEach{ print($0) }
-
-//num_str_arr = num_str_arr.forEach{ $0.compactMap{Int($0)} }
-//$0.forEach{ print("elem - \($0)") }
-//.flatMap{ $0 }
-//.reduce("", {a,b in a + b})
 
 print("num_arr - \(num_str_arr)")
 
