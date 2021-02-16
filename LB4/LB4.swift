@@ -131,15 +131,13 @@ print("Arr sorted by desc - \(randomNumsArr)")
 randomNumsArr.sort(by: {$0 < $1} )
 print("Arr sorted by asc - \(randomNumsArr)")
 
-
 var num_arr: [String] = ["12", "4", "54", "90", "89", "nb67"]
 var num_str_arr = num_arr
 .compactMap{ Int($0) }
 .map{ Array(String($0)) }
-
+print("num_arr - \(num_str_arr)")
 num_str_arr.forEach{ print("RESULT - \($0.compactMap{ Int(String($0)) }.reduce(0, +)) ") }
 
-print("num_arr - \(num_str_arr)")
 
 randomNumsArr = [1, 2, 3, 10, 9, 50, 4]
 var maxFromArr: Int = randomNumsArr.reduce(0) { (total, number) in max(total, number) }
