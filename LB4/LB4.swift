@@ -124,3 +124,15 @@ if let some_operationTwo = doOperation(operation: "p"){
 else { print("No such operation\n") }
 
 print("\n======= TASK 4 =======\n")
+
+var randomNumsArr: [Int] = [34, 12, 1, 0, 100, 745, 5]
+randomNumsArr.sort(by: {$0 > $1} )
+print("Arr sorted by desc - \(randomNumsArr)")
+randomNumsArr.sort(by: {$0 < $1} )
+print("Arr sorted by asc - \(randomNumsArr)")
+
+var someMatrix = [[1,2,3], [34,56], [1,78,5]]
+print("Current matrix - \(someMatrix)")
+var filtedMatrix = someMatrix.flatMap{$0.filter{$0 % 1 == 0} }
+print("Matrix to simple arr - \(filtedMatrix)")
+
