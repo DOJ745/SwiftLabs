@@ -130,21 +130,35 @@ randomNumsArr.sort(by: {$0 > $1} )
 print("Arr sorted by desc - \(randomNumsArr)")
 randomNumsArr.sort(by: {$0 < $1} )
 print("Arr sorted by asc - \(randomNumsArr)")
-
+/*
 var num_arr: [String] = ["12", "4", "54", "90", "89", "nb67"]
-var num_str_arr = num_arr
+var edited_num_arr = num_arr
 .compactMap{ Int($0) }
 .map{ Array(String($0)) }
-print("num_arr - \(num_str_arr)")
-num_str_arr.forEach{ print("RESULT - \($0.compactMap{ Int(String($0)) }.reduce(0, +)) ") }
-
+print("edited_num_arr - \(edited_num_arr)")
+edited_num_arr.forEach{ print("RESULT - \($0.compactMap{ Int(String($0)) }.reduce(0, +)) ") }
+*/
+var num_arrTwo = [145, 45, 6, 99, nil]
+var edited_num_arrTwo = num_arrTwo.map( { (elem : Int?) -> String in
+    var sum = 0
+    guard var num = elem else {
+        return "nil"
+    }
+    while(num > 0){
+        sum += num % 10
+        num /= 10
+    }
+    return String(sum)
+})
+print("Basic num_arrTwo - \(num_arrTwo)")
+print("Edited num_arrTwo - \(edited_num_arrTwo)")
 
 randomNumsArr = [1, 2, 3, 10, 9, 50, 4]
 var maxFromArr: Int = randomNumsArr.reduce(0) { (total, number) in max(total, number) }
 print("Max elem of arr from reduce() - \(maxFromArr)")
 
-var someMatrix = [[1,2,3], [34,56], [1,78,5]]
+var someMatrix = [[1, 2, 3], [34, 56], [1, 78, 5]]
 print("Current matrix - \(someMatrix)")
-var filtedMatrix = someMatrix.flatMap{$0}
-print("Matrix to simple arr - \(filtedMatrix)")
+var flatMatrix = someMatrix.flatMap{$0}
+print("Matrix to simple arr - \(flatMatrix)")
 
