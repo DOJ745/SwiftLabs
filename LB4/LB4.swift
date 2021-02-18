@@ -25,13 +25,12 @@ for (index , value) in array_of_five.enumerated() {
 print("\n======= TASK 2 =======\n")
 
 var chessFigures: [String : (Character, Int)?] = [:]
-chessFigures = ["Белая пешка" : ("A", 4), "Черный слон" : nil, "Белый король" : ("E", 2)]
+chessFigures = ["White pawn" : ("A", 4), "Black bishop" : nil, "White king" : ("E", 2)]
 
-var chessFiguresCoords: (Character, Int)?
 for coords_values in chessFigures.values{
 
     if let chessFiguresCoords = coords_values{
-        print("Chess figure have coords! It's coords - \(chessFiguresCoords)")
+        print("Chess figure on the table! It's coords - \(chessFiguresCoords)")
     }
     else { print("Figure is out of table") }
 }
