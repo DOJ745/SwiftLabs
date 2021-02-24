@@ -2,11 +2,14 @@ print("======= TASK 1 =======\n")
 
 var array_of_five = Array(5...125)
 array_of_five.dropFirst(5)
-print("Deleted first 5 elems of array, new first elems - \(array_of_five[0]), \(array_of_five[1])")
+print("Deleted first 5 elems of array, new first elems:")
+for i in 0...4{
+    print("Elem of arr - \(array_of_five[i])")
+}
 
 var five_from_arr = Array(array_of_five.suffix(5))
 
-print("Last 5 elems of arr\n")
+print("\nLast 5 elems of arr\n")
 for elem in five_from_arr{
     print("Element - \(elem)")
 }
