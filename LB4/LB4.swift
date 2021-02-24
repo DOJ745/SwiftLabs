@@ -27,12 +27,11 @@ print("\n======= TASK 2 =======\n")
 var chessFigures: [String : (Character, Int)?] = [:]
 chessFigures = ["White pawn" : ("A", 4), "Black bishop" : nil, "White king" : ("E", 2)]
 
-for coords_values in chessFigures.values{
-
-    if let chessFiguresCoords = coords_values{
-        print("Chess figure on the table! It's coords - \(chessFiguresCoords)")
+for chessValues in chessFigures{
+    if let chessCoords = chessValues.value{
+        print("Chess figure \(chessValues.key) on the table! It's coords - \(chessCoords)")
     }
-    else { print("Figure is out of table") }
+    else { print("Figure \(chessValues.key) is out of table") }
 }
 
 print("\n======= TASK 3 =======\n")
