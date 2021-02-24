@@ -30,13 +30,37 @@ enum MonthOfYear: String {
         }
         else{
             return "It's Autum"
-        }    
+        }
     }
 }
 
+/*
+enum ArithmeticExpression {
+    case addition (Double, Double)
+    case substraction (Double, Double)
+    case multiply (Double, Double)
+    case division (Double, Double)
+    case power (Double, Double)
+    
+    func evaluate() -> Double {
+        switch self{
+        case .addition(let left, let right):
+            return left + right
+        case .substraction(let left,let right):
+            return left - right
+        case .multiply(let left, let right):
+            return left * right
+        case .division(let left, let right):
+            return left / right
+        case .power(let left, let right):
+            return pow(left, right)
+        }
+    }
+}*/
+
 enum ArithmeticExpression {
 
-    case number(Int)
+    case number(Double)
 
     indirect case addition(ArithmeticExpression, ArithmeticExpression)
     indirect case subtraction(ArithmeticExpression, ArithmeticExpression)
@@ -44,7 +68,7 @@ enum ArithmeticExpression {
     indirect case division(ArithmeticExpression, ArithmeticExpression)
     indirect case power(ArithmeticExpression, ArithmeticExpression)
 
-    func evaluate(expression: ArithmeticExpression? =  nil ) -> Int{
+    func evaluate(expression: ArithmeticExpression? =  nil ) -> Double{
         
         let expression = (expression == nil ? self : expression)
         switch expression! {
@@ -64,15 +88,16 @@ enum ArithmeticExpression {
                 return self.evaluate( expression: valueLeft ) / self.evaluate( expression: valueRight )
 
         case .power ( let valueLeft, let valueRight ):
-                return self.evaluate( expression: valueLeft ) + self.evaluate( expression: valueRight )
+            return pow( self.evaluate( expression: valueLeft ), self.evaluate( expression: valueRight ))
 
         }
     }
 }
-var expr = ArithmeticExpression.addition( .number(20), .addition( .number(10), .number(30) ) )
+ 
+var expr = ArithmeticExpression.power(.number(4), .addition(.number(0), .number(2)))
 print("Operation result - \(expr.evaluate())\n")
 
-var myMonth = MonthOfYear.September 
+var myMonth = MonthOfYear.September
 print("Description value - \(type(of: myMonth.descriptionValue()) )")
 print("Description RAW value - \(type(of: myMonth.descriptionRawValue())  )")
 print("\(myMonth.Season())")
