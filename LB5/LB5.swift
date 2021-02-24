@@ -15,8 +15,6 @@ enum MonthOfYear: String {
     case November = "November"
     case December = "December"
 
-    //case testMonth (String)
-
     func descriptionValue() -> MonthOfYear{ return self }
     func descriptionRawValue() -> String{ return self.rawValue }
 
