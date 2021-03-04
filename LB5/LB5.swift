@@ -68,38 +68,38 @@ enum ArithmeticExpression {
     indirect case division(ArithmeticExpression, ArithmeticExpression)
     indirect case power(ArithmeticExpression, ArithmeticExpression)
 
-    func evaluate(expression: ArithmeticExpression? =  nil ) -> Double{
+    func evaluate(expression: ArithmeticExpression? =  nil ) -> Double {
         
         let expression = (expression == nil ? self : expression)
         switch expression! {
-        case .number( let value ):
+        case .number(let value):
             return value
 
-        case .addition( let valueLeft, let valueRight ):
-                return self.evaluate( expression: valueLeft ) + self.evaluate( expression: valueRight )
+        case .addition(let valueLeft, let valueRight):
+                return self.evaluate(expression: valueLeft) + self.evaluate(expression: valueRight)
 
-        case .subtraction( let valueLeft, let valueRight ):
-            return self.evaluate( expression: valueLeft ) - self.evaluate( expression: valueRight )
+        case .subtraction(let valueLeft, let valueRight):
+            return self.evaluate(expression: valueLeft) - self.evaluate(expression: valueRight)
 
-        case .multiply ( let valueLeft, let valueRight ):
-                return self.evaluate( expression: valueLeft ) * self.evaluate( expression: valueRight )
+        case .multiply (let valueLeft, let valueRight):
+                return self.evaluate(expression: valueLeft) * self.evaluate(expression: valueRight)
 
-        case .division( let valueLeft, let valueRight ):
-                return self.evaluate( expression: valueLeft ) / self.evaluate( expression: valueRight )
+        case .division(let valueLeft, let valueRight):
+                return self.evaluate(expression: valueLeft) / self.evaluate(expression: valueRight)
 
-        case .power ( let valueLeft, let valueRight ):
-            return pow( self.evaluate( expression: valueLeft ), self.evaluate( expression: valueRight ))
+        case .power (let valueLeft, let valueRight):
+            return pow(self.evaluate(expression: valueLeft), self.evaluate(expression: valueRight))
 
         }
     }
 }
  
-var expr = ArithmeticExpression.power(.number(4), .addition(.number(0), .number(2)))
+var expr = ArithmeticExpression.power(.number(4), .addition(.number(1), .number(2)))
 print("Operation result - \(expr.evaluate())\n")
 
 var myMonth = MonthOfYear.September
-print("Description value - \(type(of: myMonth.descriptionValue()) )")
-print("Description RAW value - \(type(of: myMonth.descriptionRawValue())  )")
+print("Description value - \( type(of: myMonth.descriptionValue()) )")
+print("Description RAW value - \( type(of: myMonth.descriptionRawValue()) )")
 print("\(myMonth.Season())")
 
 
