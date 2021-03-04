@@ -88,7 +88,7 @@ enum ArithmeticExpression {
                 return self.evaluate(expression: valueLeft) / self.evaluate(expression: valueRight)
 
         case .power (let valueLeft, let valueRight):
-            return pow(self.evaluate(expression: valueLeft), self.evaluate(expression: valueRight))
+            return (self.evaluate(expression: valueLeft) * self.evaluate(expression: valueRight))
 
         }
     }
@@ -105,4 +105,80 @@ print("\(myMonth.Season())")
 
 print("\n======== TASK 2 ========\n")
 
+class Bug {
+    
+    enum Status {
+        case Open
+        case Closed
+        case Resolved
+        case Reopened
+        case In_Progress
+    }
+    
+    enum Severity {
+        case High
+        case Medium
+        case Low
+    }
+    
+    enum Priority {
+        case Blocker
+        case Critical
+        case Major
+        case Minor
+    }
+    
+    static var ID: Int = 0
+    
+    let Notifyer: String
+    let Summary: String
+    let DateTime: String
+    var StepsToReproduce: Array<String>? = nil
+    let Assignee: String
+    var FixedProductVersion: String? = nil
+    
+    var priority: Priority {
+        get { return self.priority }
+        set(newPriority) { self.priority = newPriority }
+    }
+    
+    let severity: Severity
+    let status: Status
+    
+    init(severity: Severity, status: Status) {
+        self.severity = severity
+        self.status = status
+        
+        self.Notifyer = "none"
+        self.Summary = "none"
+        self.DateTime = "none"
+        self.StepsToReproduce = nil
+        self.Assignee = "none"
+        self.FixedProductVersion = nil
+    }
+    
+    init(notifyer: String, summary: String, dateTime: String, stepsToReproduce: Array<String>?, _ assignee: String, _ fixedProductVersion: String?) {
+        
+        self.Notifyer = notifyer
+        self.Summary = summary
+        self.DateTime = dateTime
+        self.StepsToReproduce = stepsToReproduce
+        self.Assignee = assignee
+        self.FixedProductVersion = fixedProductVersion
+        
+        //self.priority = Priority.Minor
+        self.severity = Severity.Low
+        self.status = Status.In_Progress
+        
+        Bug.ID += 1
+    }
+    
+    
+}
+
+var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToReproduce: nil, "1", nil)
+var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToReproduce: nil, "1", nil)
+
+print(Bug.ID)
 print("\n======== TASK 3 ========\n")
+
