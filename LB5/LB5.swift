@@ -36,29 +36,6 @@ enum MonthOfYear: String {
 
 /*
 enum ArithmeticExpression {
-    case addition (Double, Double)
-    case substraction (Double, Double)
-    case multiply (Double, Double)
-    case division (Double, Double)
-    case power (Double, Double)
-    
-    func evaluate() -> Double {
-        switch self{
-        case .addition(let left, let right):
-            return left + right
-        case .substraction(let left,let right):
-            return left - right
-        case .multiply(let left, let right):
-            return left * right
-        case .division(let left, let right):
-            return left / right
-        case .power(let left, let right):
-            return pow(left, right)
-        }
-    }
-}*/
-
-enum ArithmeticExpression {
 
     case number(Double)
 
@@ -95,7 +72,7 @@ enum ArithmeticExpression {
 }
  
 var expr = ArithmeticExpression.power(.number(4), .addition(.number(1), .number(2)))
-print("Operation result - \(expr.evaluate())\n")
+print("Operation result - \(expr.evaluate())\n")*/
 
 var myMonth = MonthOfYear.September
 print("Description value - \( type(of: myMonth.descriptionValue()) )")
@@ -131,9 +108,9 @@ class Bug {
 
     static var ID: Int = 0
     
-    let Notifyer: String
+    var Notifyer: String
     let Summary: String
-    let DateTime: String
+    var DateTime: String
     var StepsToReproduce: Array<String>? = nil
     var Assignee: String
     var FixedProductVersion: String? = nil
@@ -141,6 +118,12 @@ class Bug {
     var priority: Priority
     let severity: Severity
     var status: Status
+    
+    lazy var whenWasNotifyed: String = self.generateNotify()
+    
+    func generateNotify() -> String {
+        return "Who notifyed: + \(self.Notifyer); When notifyed: \(self.DateTime)"
+    }
 
     func changePriority(_ updatePrior: Priority){
         self.priority = updatePrior
@@ -157,8 +140,7 @@ class Bug {
     
     subscript(stepNumber: Int) -> String? {
         get {
-            if let step = self.StepsToReproduce[stepNumber] {
-                print("Description of step: \(step)")
+            if let step = self.StepsToReproduce?[stepNumber] {
                 return step
             }
             return nil
@@ -179,11 +161,11 @@ class Bug {
         self.FixedProductVersion = nil
     }
     
-    init(notifyer: String, 
-    summary: String, 
-    dateTime: String, 
-    stepsToReproduce: Array<String>?, 
-    _ assignee: String, 
+    init(notifyer: String,
+    summary: String,
+    dateTime: String,
+    stepsToReproduce: Array<String>?,
+    _ assignee: String,
     _ fixedProductVersion: String?) {
         
         self.Notifyer = notifyer
@@ -207,10 +189,18 @@ var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToRe
 var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToReproduce: nil, "1", nil)
 
 print(Bug.ID)
+
 bugOne.changePriority(Priority.Blocker)
 bugOne.signAssignee("Valter")
 bugOne.changeStatus(Status.Closed)
-print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status)")
+bugOne.StepsToReproduce = ["Step One", "Step Two", "Step three"]
+
+bugOne.Notifyer = "Bill"
+bugOne.DateTime = "25.03.2020"
+print(bugOne.whenWasNotifyed)
+bugOne.DateTime = "13.01.2010"
+print(bugOne.whenWasNotifyed)
+print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status) + \(bugOne.StepsToReproduce![0])")
 
 print("\n======== TASK 3 ========\n")
 
