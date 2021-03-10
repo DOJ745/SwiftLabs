@@ -107,7 +107,14 @@ class Bug {
 
     static var ID: Int = 0
     
-    var Notifyer: String
+    var Notifyer: String{
+        willSet(newValueOfNotify){
+            print("Will change our notifyer \(self.Notifyer) to \(newValueOfNotify)")
+        }
+        didSet(oldValueOfNotify){
+            print("Old notifyer\(oldValueOfNotify) has changed to \(self.Notifyer)")
+        }
+    }
     let Summary: String
     var DateTime: String
     var StepsToReproduce: Array<String>? = nil
