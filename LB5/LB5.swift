@@ -1,3 +1,5 @@
+import Cocoa
+
 print("======== TASK 1 ========\n")
 
 enum MonthOfYear: String {
@@ -103,6 +105,14 @@ enum Priority {
     case Minor
 }
 
+
+enum UIType {
+    case Button
+    case Widget
+    case NavigationPanel
+    case Icon
+}
+
 class Bug {
 
     static var ID: Int = 0
@@ -124,7 +134,7 @@ class Bug {
     var priority: Priority
     let severity: Severity
     var status: Status
-
+    
     lazy var whenWasNotifyed: String = self.generateNotify()
     
     func generateNotify() -> String {
@@ -153,6 +163,25 @@ class Bug {
         }
     }
     
+    convenience init(info: String){
+        self.init()
+        print(info)
+    }
+    
+    init() {
+        self.priority = Priority.Minor
+        self.Notifyer = "none"
+        self.Summary = "none"
+        self.DateTime = "none"
+        self.StepsToReproduce = nil
+        self.Assignee = "none"
+        
+        self.priority = Priority.Minor
+        self.severity = Severity.Low
+        self.status = Status.In_Progress
+        self.FixedProductVersion = nil
+    }
+    
     
     init(severity: Severity, status: Status) {
         self.severity = severity
@@ -167,11 +196,11 @@ class Bug {
         self.FixedProductVersion = nil
     }
     
-    init(notifyer: String, 
-    summary: String, 
-    dateTime: String, 
-    stepsToReproduce: Array<String>?, 
-    _ assignee: String, 
+    init(notifyer: String,
+    summary: String,
+    dateTime: String,
+    stepsToReproduce: Array<String>?,
+    _ assignee: String,
     _ fixedProductVersion: String?) {
         
         self.Notifyer = notifyer
@@ -189,6 +218,44 @@ class Bug {
     }
     
     
+    init?(fixedProductVersion: String){
+        self.priority = Priority.Minor
+        self.Notifyer = "none"
+        self.Summary = "none"
+        self.DateTime = "none"
+        self.StepsToReproduce = nil
+        self.Assignee = "none"
+        self.FixedProductVersion = nil
+        
+        self.priority = Priority.Minor
+        self.severity = Severity.Low
+        self.status = Status.In_Progress
+        
+        if fixedProductVersion.isEmpty { return nil }
+        self.FixedProductVersion =  fixedProductVersion
+        
+    }
+    
+    func showSmt(){
+        print("Some info: \(self.Assignee) + \(self.DateTime)")
+    }
+}
+
+class UIBug: Bug {
+
+    var UIElem: UIType
+    var Device: String
+    
+    init(uiElem: UIType, device: String) {
+        
+        self.UIElem = uiElem
+        self.Device = device
+        super.init()
+    }
+    
+    override func showSmt() {
+        print("Some UI info: \(self.Device)")
+    }
 }
 
 var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToReproduce: nil, "1", nil)
@@ -208,5 +275,36 @@ print(bugOne.whenWasNotifyed)
 
 print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status)")
 
+bugOne.FixedProductVersion = "0.2"
+print("Version: \(bugOne.FixedProductVersion!)")
+
 print("\n======== TASK 3 ========\n")
 
+var uiBug: UIBug = UIBug.init(uiElem: UIType.Button, device: "IPhone 9")
+var bugs = [Any]()
+
+bugs.append(bugOne)
+bugs.append(bugTwo)
+bugs.append(uiBug)
+
+var usualBugs = [Bug?]()
+var uiBugs = [UIBug?]()
+
+for elem in bugs{
+    if elem is Bug{
+        let usualBug = elem as! Bug
+        usualBugs.append(usualBug)
+    }
+    if elem is UIBug{
+        let someUIBug = elem as! UIBug
+        uiBugs.append(someUIBug)
+    }
+}
+
+for elem in usualBugs{
+    print("Elem - \(elem!.showSmt())")
+}
+
+for elem in uiBugs{
+    print("UI elem - \(elem!.showSmt())")
+}
