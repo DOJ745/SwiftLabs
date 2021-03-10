@@ -34,8 +34,7 @@ enum MonthOfYear: String {
     }
 }
 
-/*
-enum ArithmeticExpression {
+/*enum ArithmeticExpression {
 
     case number(Double)
 
@@ -118,7 +117,7 @@ class Bug {
     var priority: Priority
     let severity: Severity
     var status: Status
-    
+
     lazy var whenWasNotifyed: String = self.generateNotify()
     
     func generateNotify() -> String {
@@ -161,11 +160,11 @@ class Bug {
         self.FixedProductVersion = nil
     }
     
-    init(notifyer: String,
-    summary: String,
-    dateTime: String,
-    stepsToReproduce: Array<String>?,
-    _ assignee: String,
+    init(notifyer: String, 
+    summary: String, 
+    dateTime: String, 
+    stepsToReproduce: Array<String>?, 
+    _ assignee: String, 
     _ fixedProductVersion: String?) {
         
         self.Notifyer = notifyer
@@ -189,18 +188,17 @@ var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToRe
 var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToReproduce: nil, "1", nil)
 
 print(Bug.ID)
-
 bugOne.changePriority(Priority.Blocker)
 bugOne.signAssignee("Valter")
 bugOne.changeStatus(Status.Closed)
-bugOne.StepsToReproduce = ["Step One", "Step Two", "Step three"]
 
 bugOne.Notifyer = "Bill"
 bugOne.DateTime = "25.03.2020"
 print(bugOne.whenWasNotifyed)
 bugOne.DateTime = "13.01.2010"
 print(bugOne.whenWasNotifyed)
-print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status) + \(bugOne.StepsToReproduce![0])")
+
+print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status)")
 
 print("\n======== TASK 3 ========\n")
 
