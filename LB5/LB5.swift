@@ -153,6 +153,18 @@ class Bug {
     func changeStatus(_ updateStat: Status){
         self.status = updateStat
     }
+
+    
+    subscript(stepNumber: Int) -> String? {
+        get {
+            if let step = self.StepsToReproduce[stepNumber] {
+                print("Description of step: \(step)")
+                return step
+            }
+            return nil
+        }
+    }
+    
     
     init(severity: Severity, status: Status) {
         self.severity = severity
