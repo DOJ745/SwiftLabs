@@ -290,16 +290,24 @@ bugs.append(uiBug)
 var usualBugs = [Bug?]()
 var uiBugs = [UIBug?]()
 
+var countUsualBugs = 0
+var countUIBugs = 0
+
 for elem in bugs{
     if elem is Bug{
         let usualBug: Bug = elem as! Bug
         usualBugs.append(usualBug)
+        countUsualBugs += 1
     }
     if elem is UIBug{
         let someUIBug: UIBug = elem as! UIBug
         uiBugs.append(someUIBug)
+        countUIBugs += 1
     }
 }
+
+print("Amount of Bug: \(countUsualBugs)")
+print("Amount of UIBug: \(countUIBugs)")
 
 for elem in usualBugs{
     print("-- Elem ---")
