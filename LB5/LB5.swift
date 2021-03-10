@@ -292,11 +292,11 @@ var uiBugs = [UIBug?]()
 
 for elem in bugs{
     if elem is Bug{
-        let usualBug = elem as! Bug
+        let usualBug: Bug = elem as! Bug
         usualBugs.append(usualBug)
     }
     if elem is UIBug{
-        let someUIBug = elem as! UIBug
+        let someUIBug: UIBug = elem as! UIBug
         uiBugs.append(someUIBug)
     }
 }
