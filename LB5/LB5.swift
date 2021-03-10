@@ -112,7 +112,7 @@ class Bug {
             print("Will change our notifyer \(self.Notifyer) to \(newValueOfNotify)")
         }
         didSet(oldValueOfNotify){
-            print("Old notifyer\(oldValueOfNotify) has changed to \(self.Notifyer)")
+            print("Old notifyer \(oldValueOfNotify) has changed to \(self.Notifyer)")
         }
     }
     let Summary: String
@@ -128,7 +128,7 @@ class Bug {
     lazy var whenWasNotifyed: String = self.generateNotify()
     
     func generateNotify() -> String {
-        return "Who notifyed: + \(self.Notifyer); When notifyed: \(self.DateTime)"
+        return "Who notifyed: \(self.Notifyer); When notifyed: \(self.DateTime)"
     }
 
     func changePriority(_ updatePrior: Priority){
@@ -203,6 +203,7 @@ bugOne.Notifyer = "Bill"
 bugOne.DateTime = "25.03.2020"
 print(bugOne.whenWasNotifyed)
 bugOne.DateTime = "13.01.2010"
+print("Changed date to \(bugOne.DateTime)\n")
 print(bugOne.whenWasNotifyed)
 
 print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status)")
