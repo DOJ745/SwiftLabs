@@ -1,4 +1,4 @@
-import Cocoa
+//import Cocoa
 
 print("======== TASK 1 ========\n")
 
@@ -302,9 +302,11 @@ for elem in bugs{
 }
 
 for elem in usualBugs{
-    print("Elem - \(elem!.showSmt())")
+    print("-- Elem ---")
+    elem!.showSmt()
 }
 
 for elem in uiBugs{
-    print("UI elem - \(elem!.showSmt())")
+    print("--- UI elem ---")
+    elem!.showSmt()
 }
