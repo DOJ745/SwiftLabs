@@ -105,29 +105,30 @@ print("\(myMonth.Season())")
 
 print("\n======== TASK 2 ========\n")
 
+    
+enum Status {
+    case Open
+    case Closed
+    case Resolved
+    case Reopened
+    case In_Progress
+}
+    
+enum Severity {
+    case High
+    case Medium
+    case Low
+}
+    
+enum Priority {
+    case Blocker
+    case Critical
+    case Major
+    case Minor
+}
+
 class Bug {
-    
-    enum Status {
-        case Open
-        case Closed
-        case Resolved
-        case Reopened
-        case In_Progress
-    }
-    
-    enum Severity {
-        case High
-        case Medium
-        case Low
-    }
-    
-    enum Priority {
-        case Blocker
-        case Critical
-        case Major
-        case Minor
-    }
-    
+
     static var ID: Int = 0
     
     let Notifyer: String
@@ -140,6 +141,10 @@ class Bug {
     var priority: Priority {
         get { return self.priority }
         set(newPriority) { self.priority = newPriority }
+    }
+
+    func changePriority(_ updatePrior: Priority){
+        self.priority = updatePrior
     }
     
     let severity: Severity
@@ -157,7 +162,12 @@ class Bug {
         self.FixedProductVersion = nil
     }
     
-    init(notifyer: String, summary: String, dateTime: String, stepsToReproduce: Array<String>?, _ assignee: String, _ fixedProductVersion: String?) {
+    init(notifyer: String, 
+    summary: String, 
+    dateTime: String, 
+    stepsToReproduce: Array<String>?, 
+    _ assignee: String, 
+    _ fixedProductVersion: String?) {
         
         self.Notifyer = notifyer
         self.Summary = summary
@@ -180,5 +190,8 @@ var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToRe
 var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToReproduce: nil, "1", nil)
 
 print(Bug.ID)
+bugOne.changePriority(Priority.Blocker)
+print(bugOne.priority)
+
 print("\n======== TASK 3 ========\n")
 
