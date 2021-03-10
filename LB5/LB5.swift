@@ -135,25 +135,30 @@ class Bug {
     let Summary: String
     let DateTime: String
     var StepsToReproduce: Array<String>? = nil
-    let Assignee: String
+    var Assignee: String
     var FixedProductVersion: String? = nil
     
-    var priority: Priority {
-        get { return self.priority }
-        set(newPriority) { self.priority = newPriority }
-    }
+    var priority: Priority
+    let severity: Severity
+    var status: Status
 
     func changePriority(_ updatePrior: Priority){
         self.priority = updatePrior
     }
+
+    func signAssignee(_ sign: String){
+        self.Assignee = sign
+    }
     
-    let severity: Severity
-    let status: Status
+    func changeStatus(_ updateStat: Status){
+        self.status = updateStat
+    }
     
     init(severity: Severity, status: Status) {
         self.severity = severity
         self.status = status
-        
+
+        self.priority = Priority.Minor
         self.Notifyer = "none"
         self.Summary = "none"
         self.DateTime = "none"
@@ -176,7 +181,7 @@ class Bug {
         self.Assignee = assignee
         self.FixedProductVersion = fixedProductVersion
         
-        //self.priority = Priority.Minor
+        self.priority = Priority.Minor
         self.severity = Severity.Low
         self.status = Status.In_Progress
         
@@ -191,7 +196,9 @@ var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: "2", stepsToRe
 
 print(Bug.ID)
 bugOne.changePriority(Priority.Blocker)
-print(bugOne.priority)
+bugOne.signAssignee("Valter")
+bugOne.changeStatus(Status.Closed)
+print("\(bugOne.priority) + \(bugOne.Assignee) + \(bugOne.status)")
 
 print("\n======== TASK 3 ========\n")
 
