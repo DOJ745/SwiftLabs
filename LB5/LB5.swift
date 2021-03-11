@@ -36,7 +36,8 @@ enum MonthOfYear: String {
     }
 }
 
-/*enum ArithmeticExpression {
+
+enum ArithmeticExpression {
 
     case number(Double)
 
@@ -66,14 +67,14 @@ enum MonthOfYear: String {
                 return self.evaluate(expression: valueLeft) / self.evaluate(expression: valueRight)
 
         case .power (let valueLeft, let valueRight):
-            return (self.evaluate(expression: valueLeft) * self.evaluate(expression: valueRight))
+            return ( pow(self.evaluate(expression: valueLeft), self.evaluate(expression: valueRight)) )
 
         }
     }
 }
  
 var expr = ArithmeticExpression.power(.number(4), .addition(.number(1), .number(2)))
-print("Operation result - \(expr.evaluate())\n")*/
+print("Operation result - \(expr.evaluate())\n")
 
 var myMonth = MonthOfYear.September
 print("Description value - \( type(of: myMonth.descriptionValue()) )")
