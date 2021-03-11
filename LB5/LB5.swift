@@ -311,7 +311,7 @@ print("Amount of Bug: \(countUsualBugs)")
 print("Amount of UIBug: \(countUIBugs)")
 
 for elem in usualBugs{
-    print("-- Elem ---")
+    print("--- Elem ---")
     elem!.showSmt()
 }
 
