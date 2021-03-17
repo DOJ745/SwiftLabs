@@ -1,3 +1,7 @@
+//import Cocoa
+
+var currentDate = Date(timeIntervalSinceNow: 10000)
+
 enum Status {
     case Open
     case Closed
@@ -40,7 +44,7 @@ class Bug {
         }
     }
     let Summary: String
-    var DateTime: String
+    var DateTime: Date
     var StepsToReproduce: Array<String>? = nil
     var Assignee: String
     var FixedProductVersion: String? = nil
@@ -86,7 +90,7 @@ class Bug {
         self.priority = Priority.Minor
         self.Notifyer = "none"
         self.Summary = "none"
-        self.DateTime = "none"
+        self.DateTime = Date(timeIntervalSinceNow: 10000)
         self.StepsToReproduce = nil
         self.Assignee = "none"
         
@@ -104,7 +108,7 @@ class Bug {
         self.priority = Priority.Minor
         self.Notifyer = "none"
         self.Summary = "none"
-        self.DateTime = "none"
+        self.DateTime = Date(timeIntervalSinceNow: 10000)
         self.StepsToReproduce = nil
         self.Assignee = "none"
         self.FixedProductVersion = nil
@@ -112,7 +116,7 @@ class Bug {
     
     init(notifyer: String,
     summary: String,
-    dateTime: String,
+    dateTime: Date,
     stepsToReproduce: Array<String>?,
     _ assignee: String,
     _ fixedProductVersion: String?) {
@@ -136,7 +140,7 @@ class Bug {
         self.priority = Priority.Minor
         self.Notifyer = "none"
         self.Summary = "none"
-        self.DateTime = "none"
+        self.DateTime = Date(timeIntervalSinceNow: 10000)
         self.StepsToReproduce = nil
         self.Assignee = "none"
         self.FixedProductVersion = nil
@@ -154,3 +158,83 @@ class Bug {
         print("Some info: \(self.Assignee) + \(self.DateTime)")
     }
 }
+
+class UIBug: Bug {
+
+    var UIElem: UIType
+    var Device: String
+    
+    init(uiElem: UIType, device: String) {
+        
+        self.UIElem = uiElem
+        self.Device = device
+        super.init()
+    }
+    
+    override func showSmt() {
+        print("Some UI info: \(self.Device)")
+    }
+}
+
+var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: currentDate, stepsToReproduce: nil, "1", nil)
+var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: currentDate, stepsToReproduce: nil, "1", nil)
+
+print(Bug.ID)
+
+print("Current date & time: \(currentDate)")
+
+print("======== TASK 1 ========\n")
+
+extension Int{
+    func isOdd() -> Bool {
+        let check = self % 2 == 0 ? true : false
+        return check
+    }
+    
+    subscript (_ digit: Int) -> Int{
+        var decimalBase = 0
+        var sumOfDigit = 0
+        var currentNum = self
+        while currentNum > 0 {
+            decimalBase = currentNum % 10
+            if (decimalBase == digit){
+                sumOfDigit += 1
+            }
+            currentNum /= 10
+        }
+        return sumOfDigit
+    }
+}
+
+var someNumber: Int = 29
+print("Is 29 odd? - \(someNumber.isOdd())")
+var someNumberTwo: Int = 1133334
+print("Amount of 3 in \(someNumberTwo) - \(someNumberTwo[3])")
+
+extension Bug{
+    convenience init(_ updateDate: Date){
+        self.init()
+        self.DateTime = updateDate
+    }
+    
+    func daysUntilClose() -> Int {
+        var days = 0
+        let calendar = Calendar.current
+        if self.status != Status.Closed{
+            days = calendar.component(.day, from: currentDate) - calendar.component(.day, from: self.DateTime)
+        }
+        return days
+    }
+    
+    func reopeningBug(){
+        self.status = Status.Reopened
+        self.DateTime = currentDate
+    }
+}
+
+var testBug: Bug = Bug.init(currentDate)
+print("Testing conven init - \(testBug.DateTime)")
+print("Days until closed - \(testBug.daysUntilClose()) + \(testBug.status)")
+
+testBug.reopeningBug()
+print("Reopened bug - \(testBug.status) + \(testBug.DateTime)")
