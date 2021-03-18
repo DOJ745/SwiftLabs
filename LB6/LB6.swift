@@ -1,4 +1,4 @@
-//import Cocoa
+import Cocoa
 
 var currentDate = Date(timeIntervalSinceNow: 10000)
 
@@ -179,11 +179,9 @@ class UIBug: Bug {
 var bugOne: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: currentDate, stepsToReproduce: nil, "1", nil)
 var bugTwo: Bug = Bug.init(notifyer: "1", summary: "1", dateTime: currentDate, stepsToReproduce: nil, "1", nil)
 
-print(Bug.ID)
-
 print("Current date & time: \(currentDate)")
 
-print("======== TASK 1 ========\n")
+print("\n======== TASK 1 ========\n")
 
 extension Int{
     func isOdd() -> Bool {
@@ -221,7 +219,9 @@ extension Bug{
         var days = 0
         let calendar = Calendar.current
         if self.status != Status.Closed{
-            days = calendar.component(.day, from: currentDate) - calendar.component(.day, from: self.DateTime)
+            days = ( calendar.component(.year, from: currentDate) -  calendar.component(.year, from: self.DateTime) ) * 365 +
+                ( calendar.component(.month, from: currentDate) -  calendar.component(.month, from: self.DateTime) ) * 30 +
+                calendar.component(.day, from: currentDate) - calendar.component(.day, from: self.DateTime)
         }
         return days
     }
@@ -238,3 +238,67 @@ print("Days until closed - \(testBug.daysUntilClose()) + \(testBug.status)")
 
 testBug.reopeningBug()
 print("Reopened bug - \(testBug.status) + \(testBug.DateTime)")
+
+print("\n======== TASK 2 ========\n")
+
+protocol BugTracker{
+    var bugCollection: Array<Bug> {get set}
+    
+    func createBugCollection()
+    func definebugCollection(_ someCollection: Array<Bug>)
+    func changeCollectionStatus(_ newStat: Status)
+    func sortBugCollection()
+}
+
+extension BugTracker{
+    func prepareSummary(){
+        print("\n--- We have \(self.bugCollection.count) bug/s in collection ---\n")
+        for elem in self.bugCollection{
+            print("\n*** Bug status: \(elem.status)\nBug date: \(elem.DateTime)\nBug notifyer: \(elem.Notifyer) ***\n")
+        }
+    }
+}
+
+class JIRA : BugTracker{
+    
+    var bugCollection: Array<Bug> = []
+    
+    func createBugCollection(){
+        
+        let someBugOne: Bug = Bug.init(notifyer: "Mike", summary: "simple bug", dateTime: currentDate, stepsToReproduce: nil, "Likel1", nil)
+        let someBugTwo: Bug = Bug.init(notifyer: "Bill", summary: "also simple bug", dateTime: currentDate, stepsToReproduce: nil, "Corse1334", nil)
+        self.bugCollection.append(someBugOne)
+        self.bugCollection.append(someBugTwo)
+    }
+    
+    func definebugCollection(_ someCollection: Array<Bug>) {
+        self.bugCollection = someCollection
+    }
+    
+    func changeCollectionStatus(_ newStat: Status) {
+        for elem in bugCollection{
+            elem.status = newStat
+        }
+        print("Now all bugs have status - \(newStat)")
+    }
+    
+    func sortBugCollection() {
+        bugCollection.sort(by: {$0.DateTime > $1.DateTime} )
+        print("\n--- Collection was sorted by DESC date ---\n")
+        for elem in bugCollection{
+            print("Bug: \(elem.Assignee) + \(elem.Notifyer) + \(elem.DateTime)")
+        }
+    }
+}
+
+var jiraClass: JIRA = JIRA.init()
+jiraClass.createBugCollection()
+jiraClass.sortBugCollection()
+jiraClass.changeCollectionStatus(Status.In_Progress)
+jiraClass.prepareSummary()
+
+print("\n======== TASK 3 ========\n")
+
+
+
+print("\n======== TASK 4 ========\n")
