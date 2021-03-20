@@ -1,4 +1,4 @@
-//import Cocoa
+import Cocoa
 
 var currentDate = Date(timeIntervalSinceNow: 10000)
 
@@ -191,7 +191,8 @@ extension Int {
     }
 
     func isOdd() -> Bool {
-        let check = self % 2 != 0 ? true : false 
+        let check = self % 2 != 0 ? true : false
+        return check
     }
     
     subscript (_ digit: Int) -> Int {
@@ -305,6 +306,30 @@ jiraClass.prepareSummary()
 
 print("\n======== TASK 3 ========\n")
 
+struct IssueList<T> {
+    
+    var issues = [T]()
+    init() {}
+    mutating func add(_ item: T) {
+        issues.append(item)
+        print("\(item) has been added")
+    }
+    
+    mutating func remove() -> T {
+        let removeObj = issues.removeFirst()
+        print("First elem \(removeObj) of collection has been deleted\n")
+        return removeObj
+    }
+}
 
+var issueList: IssueList<Bug> = IssueList.init()
+issueList.add(bugOne)
+issueList.add(bugTwo)
+
+issueList.remove()
+
+extension IssueList {
+    
+}
 
 print("\n======== TASK 4 ========\n")
