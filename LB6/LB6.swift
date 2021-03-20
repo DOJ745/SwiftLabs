@@ -1,4 +1,4 @@
-import Cocoa
+//import Cocoa
 
 var currentDate = Date(timeIntervalSinceNow: 10000)
 
@@ -183,19 +183,24 @@ print("Current date & time: \(currentDate)")
 
 print("\n======== TASK 1 ========\n")
 
-extension Int{
-    func isOdd() -> Bool {
+extension Int {
+
+    func isEven() -> Bool {
         let check = self % 2 == 0 ? true : false
         return check
     }
+
+    func isOdd() -> Bool {
+        let check = self % 2 != 0 ? true : false 
+    }
     
-    subscript (_ digit: Int) -> Int{
+    subscript (_ digit: Int) -> Int {
         var decimalBase = 0
         var sumOfDigit = 0
         var currentNum = self
         while currentNum > 0 {
             decimalBase = currentNum % 10
-            if (decimalBase == digit){
+            if (decimalBase == digit) {
                 sumOfDigit += 1
             }
             currentNum /= 10
@@ -205,12 +210,13 @@ extension Int{
 }
 
 var someNumber: Int = 29
+print("Is 29 even? - \(someNumber.isEven())")
 print("Is 29 odd? - \(someNumber.isOdd())")
 var someNumberTwo: Int = 1133334
 print("Amount of 3 in \(someNumberTwo) - \(someNumberTwo[3])")
 
-extension Bug{
-    convenience init(_ updateDate: Date){
+extension Bug {
+    convenience init(_ updateDate: Date) {
         self.init()
         self.DateTime = updateDate
     }
@@ -226,7 +232,7 @@ extension Bug{
         return days
     }
     
-    func reopeningBug(){
+    func reopeningBug() {
         self.status = Status.Reopened
         self.DateTime = currentDate
     }
@@ -241,7 +247,7 @@ print("Reopened bug - \(testBug.status) + \(testBug.DateTime)")
 
 print("\n======== TASK 2 ========\n")
 
-protocol BugTracker{
+protocol BugTracker {
     var bugCollection: Array<Bug> {get set}
     
     func createBugCollection()
@@ -250,8 +256,8 @@ protocol BugTracker{
     func sortBugCollection()
 }
 
-extension BugTracker{
-    func prepareSummary(){
+extension BugTracker {
+    func prepareSummary() {
         print("\n--- We have \(self.bugCollection.count) bug/s in collection ---\n")
         for elem in self.bugCollection{
             print("\n*** Bug status: \(elem.status)\nBug date: \(elem.DateTime)\nBug notifyer: \(elem.Notifyer) ***\n")
@@ -259,11 +265,11 @@ extension BugTracker{
     }
 }
 
-class JIRA : BugTracker{
+class JIRA : BugTracker {
     
     var bugCollection: Array<Bug> = []
     
-    func createBugCollection(){
+    func createBugCollection() {
         
         let someBugOne: Bug = Bug.init(notifyer: "Mike", summary: "simple bug", dateTime: currentDate, stepsToReproduce: nil, "Likel1", nil)
         let someBugTwo: Bug = Bug.init(notifyer: "Bill", summary: "also simple bug", dateTime: currentDate, stepsToReproduce: nil, "Corse1334", nil)
