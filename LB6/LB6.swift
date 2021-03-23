@@ -329,7 +329,58 @@ issueList.add(bugTwo)
 issueList.remove()
 
 extension IssueList {
+    var lastIssue: T? { return self.issues.last }
+}
+
+print("Last issue - \(issueList.lastIssue!)")
+
+protocol IssueStorage {
+    associatedtype Item
+    var storage: Array<Item> {get set}
+    func addItem(_ newItem: Item)
+    func deleteItem(_ index: Int)
+}
+
+class SpecialStorage<T>: IssueStorage {
     
+    typealias Item = T
+    
+    var storage: Array<T>
+    
+    init(){ storage = [] }
+    
+    func addItem(_ newItem: T) {
+        self.storage.append(newItem)
+    }
+    
+    func deleteItem(_ index: Int) {
+        self.storage.remove(at: index)
+    }
+}
+
+var doubleStorage: SpecialStorage<Double> = SpecialStorage<Double>.init()
+
+doubleStorage.addItem(65.4)
+doubleStorage.addItem(42.2)
+for elem in doubleStorage.storage{
+    print("Elem from doubleStorage - \(elem)")
+}
+doubleStorage.deleteItem(0)
+for elem in doubleStorage.storage{
+    print("Elem from doubleStorage - \(elem)")
 }
 
 print("\n======== TASK 4 ========\n")
+
+prefix operator +++
+
+extension JIRA {
+    static prefix func +++ (current: inout JIRA) -> JIRA {
+        let newBug: Bug = Bug.init()
+        current.bugCollection.append(newBug)
+        return current
+    }
+}
+
+var newJiraClass = +++jiraClass
+print("New elem of newJiraClass - \(newJiraClass.bugCollection.last!.Assignee)")
