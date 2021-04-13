@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello LB7")
-            .font(.title)
-            .fontWeight(.heavy)
-            .foregroundColor(.red)
-            .padding()
+        VStack(alignment: .leading) {
+            Text("Hobbies")
+                .font(.title)
+                .fontWeight(.heavy)
+                .foregroundColor(.red)
+            Text("Tap on element to open details")
+        }
     }
 }
 
