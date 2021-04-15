@@ -9,18 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Hobbies")
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(.red)
-            Text("Tap on element to open details")
+        VStack(){
+            ImageView()
+            Divider()
+            
+            VStack(alignment: .center) {
+                Text("Hobbies")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.red)
+                Text("Tap on element to see details").font(.title3)
+            }
+            Spacer()
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }

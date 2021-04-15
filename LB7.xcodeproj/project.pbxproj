@@ -11,6 +11,7 @@
 		1905A5D0261EFAA10066618E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1905A5CF261EFAA10066618E /* ContentView.swift */; };
 		1905A5D2261EFAA30066618E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1905A5D1261EFAA30066618E /* Assets.xcassets */; };
 		1905A5D5261EFAA30066618E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1905A5D4261EFAA30066618E /* Preview Assets.xcassets */; };
+		1930057E262801DC0073C1D6 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1930057D262801DC0073C1D6 /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		1905A5D1261EFAA30066618E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1905A5D4261EFAA30066618E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1905A5D6261EFAA30066618E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1930057D262801DC0073C1D6 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				1905A5CD261EFAA10066618E /* LB7App.swift */,
 				1905A5CF261EFAA10066618E /* ContentView.swift */,
 				1905A5D1261EFAA30066618E /* Assets.xcassets */,
+				1930057D262801DC0073C1D6 /* ImageView.swift */,
 				1905A5D6261EFAA30066618E /* Info.plist */,
 				1905A5D3261EFAA30066618E /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1930057E262801DC0073C1D6 /* ImageView.swift in Sources */,
 				1905A5D0261EFAA10066618E /* ContentView.swift in Sources */,
 				1905A5CE261EFAA10066618E /* LB7App.swift in Sources */,
 			);
