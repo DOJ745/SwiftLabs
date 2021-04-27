@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Crafting",
+        "description": "1234",
+        "site": "www.somesite.com",
+        "type": "Middle",
+        "imageName": "crafting-table"
+    },
+    {
+        "name": "Chest-making",
+        "description": "123456",
+        "site": "www.somesite2.com",
+        "type": "Middle",
+        "imageName": "chest"
+    }
+]

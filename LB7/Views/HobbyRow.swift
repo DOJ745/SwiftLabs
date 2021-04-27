@@ -11,7 +11,11 @@ struct HobbyRow: View {
     
     var hobby: Hobby
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            hobby.image.resizable().frame(width: 80, height: 80)
+            Text(hobby.name)
+            Text(hobby.description)
+        }
     }
 }
 
