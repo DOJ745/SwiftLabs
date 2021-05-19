@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "Crafting",
         "description": "1234",
         "site": "www.somesite.com",
@@ -7,6 +8,7 @@
         "imageName": "crafting-table"
     },
     {
+        "id": 2,
         "name": "Chest-making",
         "description": "123456",
         "site": "www.somesite2.com",

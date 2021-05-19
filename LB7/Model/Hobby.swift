@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct Hobby: Hashable, Codable {
+struct Hobby: Hashable, Codable, Identifiable {
+    
+    var id: Int
     var name: String
     var description: String
     var site: String

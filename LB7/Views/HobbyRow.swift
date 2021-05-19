@@ -21,6 +21,10 @@ struct HobbyRow: View {
 
 struct HobbyRow_Previews: PreviewProvider {
     static var previews: some View {
-        HobbyRow(hobby: hobbies[0])
+        Group{
+            HobbyRow(hobby: hobbies[0])
+            HobbyRow(hobby: hobbies[1])
+        }.previewLayout(.fixed(width: 300, height: 80))
+        
     }
 }

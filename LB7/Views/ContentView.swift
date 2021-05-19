@@ -21,6 +21,7 @@ struct ContentView: View {
                 Text("Tap on element to see details").font(.title3)
             }
             Spacer()
+            
         }
     }
 }
