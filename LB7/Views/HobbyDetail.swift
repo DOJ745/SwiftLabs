@@ -8,8 +8,48 @@
 import SwiftUI
 
 struct HobbyDetail: View {
+    
+    @State private var progress = 0.01
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+        VStack {
+            
+            ImageView()
+                .ignoresSafeArea(edges: .top)
+            
+            Text("Add progress to hobby")
+            
+            ProgressView(value: progress)
+                .frame(height: 20.0)
+            Button("Add", action: { progress += 0.05 })
+            Divider()
+            
+            VStack(alignment: .leading){
+                Text("Some hobby")
+                    .font(.title)
+                    .foregroundColor(.primary)
+                
+                HStack {
+                    Text("Hobby type")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Link("Hobby site",
+                          destination: URL(string: "https://www.example.com/TOS.html")!)
+                }
+                .font(.headline)
+                
+                Divider()
+                Text("About hobby")
+                    .font(.title2)
+                Text("Hobby description")
+                
+            }
+            .padding()
+            Spacer()
+            
+            Divider()
+        }
     }
 }
 
