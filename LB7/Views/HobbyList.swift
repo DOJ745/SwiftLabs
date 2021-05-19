@@ -9,8 +9,13 @@ import SwiftUI
 
 struct HobbyList: View {
     var body: some View {
-        List(hobbies){ hobbyElem in
-            HobbyRow(hobby: hobbyElem)
+        NavigationView{
+            List(hobbies){ hobbyElem in
+                NavigationLink(destination: HobbyDetail()){
+                    HobbyRow(hobby: hobbyElem)
+                }
+            }
+            .navigationTitle("Hobby List")
         }
     }
 }

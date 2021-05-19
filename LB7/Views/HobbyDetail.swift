@@ -19,7 +19,7 @@ struct HobbyDetail: View {
                 .ignoresSafeArea(edges: .top)
                 .padding()
             
-            Text("Add progress to hobby")
+            Text("Add progress to your hobby")
             
             ProgressView(value: progress)
                 .frame(height: 20.0)
