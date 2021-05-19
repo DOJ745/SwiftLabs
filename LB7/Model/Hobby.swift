@@ -14,7 +14,7 @@ struct Hobby: Hashable, Codable, Identifiable {
     var name: String
     var description: String
     var site: String
-    var type: String
+    var difficulty: String
     
     private var imageName: String
     var image: Image {

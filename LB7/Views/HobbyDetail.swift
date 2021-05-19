@@ -11,11 +11,16 @@ struct HobbyDetail: View {
     
     @State private var progress = 0.01
     
+    var hobbyItem: Hobby
+    
     var body: some View {
-
-        VStack {
+        
+        ScrollView {
             
-            ImageView()
+            ImageView(image:
+                        hobbyItem.image
+                        .resizable()
+            )
                 .ignoresSafeArea(edges: .top)
                 .padding()
             
@@ -27,35 +32,39 @@ struct HobbyDetail: View {
             Divider()
             
             VStack(alignment: .leading){
-                Text("Some hobby")
+                Text(hobbyItem.name)
                     .font(.title)
                     .foregroundColor(.primary)
                 
                 HStack {
-                    Text("Hobby type")
+                    Text("Difficulty: " + hobbyItem.difficulty)
                         .foregroundColor(.secondary)
                     Spacer()
-                    Link("Hobby site",
-                          destination: URL(string: "https://www.example.com/TOS.html")!)
+                    Link("Visit site",
+                         destination: URL(string: hobbyItem.site)!)
                 }
                 .font(.title2)
                 
                 Divider()
                 Text("About hobby")
                     .font(.title2)
-                Text("Hobby description")
+                Text(hobbyItem.description)
                 
             }
             .padding()
-            Spacer()
-            
-            Divider()
         }
+        .frame(
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 0,
+            maxHeight: .infinity)
+        .navigationTitle(hobbyItem.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct HobbyDetail_Previews: PreviewProvider {
     static var previews: some View {
-        HobbyDetail()
+        HobbyDetail(hobbyItem: hobbies[0])
     }
 }

@@ -8,22 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isPresented = false
+    
     var body: some View {
         
-        LazyVStack(){
+        TabView() {
             
-            ImageView()
-            Divider()
-            
-            VStack(alignment: .center) {
+            LazyVStack(alignment: .center) {
+                ImageView(image: Image("main_icon_128"))
                 Text("Hobbies")
                     .font(.title)
                     .fontWeight(.heavy)
                     .foregroundColor(.red)
-                Text("Tap on element to see details").font(.title3)
+                Text("Here you will find your favorite one").font(.title3)
+                Spacer()
+                Text("In this app you will find unusual hobbies, which you can find interestion or not, depends on your tastes. So, choose any that you like, making progress, and have fun").font(.subheadline).multilineTextAlignment(.center)
             }
-            Spacer()
+            .tabItem {
+                Image(systemName: "1.square.fill")
+                Text("Info")
+                
+            }
             HobbyList()
+                .tabItem {
+                    Image(systemName: "2.square.fill")
+                    Text("Hobby list")
+                    
+                }
             
         }
     }

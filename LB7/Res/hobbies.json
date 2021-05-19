@@ -1,18 +1,26 @@
 [
     {
         "id": 1,
-        "name": "Crafting",
-        "description": "1234",
-        "site": "www.somesite.com",
-        "type": "Middle",
-        "imageName": "crafting-table"
+        "name": "Planting",
+        "description": "It is always a pleasure to collect what has grown in your garden. So why not collect whatever your heart desires? All you need is seeds, water, earth, and a little patience.",
+        "site": "https://www.wikihow.com/Plant",
+        "difficulty": "Simple",
+        "imageName": "plant"
     },
     {
         "id": 2,
         "name": "Chest-making",
-        "description": "123456",
-        "site": "www.somesite2.com",
-        "type": "Middle",
-        "imageName": "chest"
+        "description": "All of you have seen chests both in the movies and on the pages of books, but in real life they rarely come across. Why not make them for the general public? Such a thing can serve not only as decoration, but also as a full-fledged storage of your treasures, because this is what the chest is intended for.",
+        "site": "https://www.minecraft.net/ru-ru",
+        "difficulty": "Middle",
+        "imageName": "treasure_chest"
+    },
+    {
+        "id": 3,
+        "name": "Blacksmithing",
+        "description": "All of you have seen chests both in the movies and on the pages of books, but in real life they rarely come across. Why not make them for the general public? Such a thing can serve not only as decoration, but also as a full-fledged storage of your treasures, because this is what the chest is intended for.",
+        "site": "https://en.wikipedia.org/wiki/Blacksmith,
+        "difficulty": "Hard",
+        "imageName": "treasure_chest"
     }
 ]
