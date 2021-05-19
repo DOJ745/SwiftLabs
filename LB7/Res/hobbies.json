@@ -19,8 +19,8 @@
         "id": 3,
         "name": "Blacksmithing",
         "description": "All of you have seen chests both in the movies and on the pages of books, but in real life they rarely come across. Why not make them for the general public? Such a thing can serve not only as decoration, but also as a full-fledged storage of your treasures, because this is what the chest is intended for.",
-        "site": "https://en.wikipedia.org/wiki/Blacksmith,
+        "site": "https://en.wikipedia.org/wiki/Blacksmith",
         "difficulty": "Hard",
-        "imageName": "treasure_chest"
+        "imageName": "blacksmithing"
     }
 ]

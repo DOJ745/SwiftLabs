@@ -38,6 +38,8 @@ struct ContentView: View {
                 }
             
         }
+        .padding(.all, 5)
+        .background(Color.orange)
     }
 }
 
