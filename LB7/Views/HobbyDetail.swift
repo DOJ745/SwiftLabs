@@ -17,6 +17,7 @@ struct HobbyDetail: View {
             
             ImageView()
                 .ignoresSafeArea(edges: .top)
+                .padding()
             
             Text("Add progress to hobby")
             
@@ -37,7 +38,7 @@ struct HobbyDetail: View {
                     Link("Hobby site",
                           destination: URL(string: "https://www.example.com/TOS.html")!)
                 }
-                .font(.headline)
+                .font(.title2)
                 
                 Divider()
                 Text("About hobby")
